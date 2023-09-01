@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Container, Grid, Typography } from '@mui/material';
+import Formulario from './components/Formulario';
+import { NoticiasProvider } from './context/NoticiasProvider';
+import ListadoNoticias from './components/ListadoNoticias';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<NoticiasProvider>
+			<Container>
+				<header>
+					<Typography
+						variant='h3'
+						align='center'
+						marginY={5}
+						component='h1'
+					>
+						Buscador de Noticias (USA)
+					</Typography>
+				</header>
+				<Grid
+					container
+					direction='row'
+					justifyContent='center'
+					alignItems='center'
+				>
+					<Grid
+						item
+						xs={12}
+						md={6}
+						lg={4}
+					>
+						<Formulario />
+					</Grid>
+        </Grid>
+        <ListadoNoticias/>
+			</Container>
+		</NoticiasProvider>
+	);
 }
 
-export default App
+export default App;
